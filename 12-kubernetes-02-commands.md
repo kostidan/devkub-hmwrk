@@ -13,7 +13,7 @@
 >  * наличие deployment можно проверить командой kubectl get deployment
 >  * наличие подов можно проверить командой kubectl get pods
 
-* количество реплик в deployment установлено в 2
+* `количество реплик в deployment установлено в 2`
     ```
     root@minikube:~# kubectl create deployment hello-node --image=k8s.gcr.io/echoserver:1.4 -r 2
     deployment.apps/hello-node created
@@ -24,7 +24,7 @@
     NAME         READY   UP-TO-DATE   AVAILABLE   AGE
     hello-node   2/2     2            2           3s
     ```
-* ```kubectl get pods```
+* `kubectl get pods`
     ```
     root@minikube:~# kubectl get pods
     NAME                          READY   STATUS    RESTARTS   AGE
@@ -42,7 +42,7 @@
 >  * пользователь прописан в локальный конфиг (~/.kube/config, блок users)
 >  * пользователь может просматривать логи подов и их конфигурацию (kubectl logs pod <pod_id>, kubectl describe pod <pod_id>)
 
-* /.kube/config
+* `/.kube/config`
     ```
     apiVersion: v1
     clusters:
@@ -86,7 +86,7 @@
         client-certificate: /root/.minikube/profiles/minikube/client.crt
         client-key: /root/.minikube/profiles/minikube/client.key
     ```
-* role.yml
+* `role.yml`
     ```
     apiVersion: rbac.authorization.k8s.io/v1
     kind: Role
@@ -98,7 +98,7 @@
     resources: ["pods", "pods/log"]
     verbs: ["get", "list"]
     ```
-* rolebinding.yml
+* `rolebinding.yml`
     ```
     apiVersion: rbac.authorization.k8s.io/v1
     kind: RoleBinding
@@ -114,7 +114,7 @@
     name: role-dev
     apiGroup: rbac.authorization.k8s.io
     ```
-* Переключение контекста и проверка прав пользователя
+* `Переключение контекста и проверка прав пользователя`
     ```
     root@minikube:~/user# kubectl config use-context app-namespace-dev
     Switched to context "app-namespace-dev".
@@ -141,7 +141,7 @@
 >  * в deployment из задания 1 изменено количество реплик на 5
 >  * проверить что все поды перешли в статус running (kubectl get pods)
 
-* Увеличим количество реплик до 5 5
+* `Увеличим количество реплик до 5`
     ```
     root@minikube:~/user# kubectl scale deployment hello-node --replicas=5
     deployment.apps/hello-node scaled
