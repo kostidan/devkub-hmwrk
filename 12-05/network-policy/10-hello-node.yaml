@@ -1,0 +1,19 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: internal-accept
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: hello-node
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: hello-node
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          app: hello-node
